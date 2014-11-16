@@ -13,7 +13,10 @@ VAGRANT_ID=$1
 REMOTEDIR=/var/atlassian/application-data/confluence/temp
 
 vagrant ssh-config ${VAGRANT_ID} >tmp-sshconfig
+
+#ssh -F tmp-sshconfig atlassian ls -la /var/atlassian/application-data/confluence/backups
 #ssh -F tmp-sshconfig atlassian ls -la ${REMOTEDIR}
+
 ssh -F tmp-sshconfig atlassian ls ${REMOTEDIR} >tmp-files
 for f in $(cat tmp-files); do
     scp -F tmp-sshconfig atlassian:${REMOTEDIR}/${f} .
