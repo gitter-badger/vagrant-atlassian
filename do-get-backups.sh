@@ -23,4 +23,7 @@ for f in $(cat tmp-files); do
 done
 # TODO: rsync -avz xxx .
 
+rm -f tmp-sshconfig
+rm -f tmp-files
+
 # EOF
